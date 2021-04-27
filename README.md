@@ -5,4 +5,4 @@
 
 Semana 09<br>
 - Intents
-    - Explícitos
+    - Implícitos (llaman a otras apps del teléfono)

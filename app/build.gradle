@@ -8,6 +8,9 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        vectorDrawables {
+            useSupportLibrary = true
+        }
         applicationId "com.cetis108.semana09"
         minSdkVersion 19
         targetSdkVersion 30
