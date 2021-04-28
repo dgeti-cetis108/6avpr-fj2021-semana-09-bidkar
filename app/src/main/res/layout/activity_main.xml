@@ -23,6 +23,7 @@
         android:id="@+id/imageButtonMainOpenInBrowser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="openInBrowser"
         app:layout_constraintBottom_toBottomOf="@+id/editTextMainUrl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,16 +35,23 @@
         android:id="@+id/editTextMainPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
         android:ems="15"
         android:inputType="phone"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="174dp" />
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonMainPhone"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMainUrl" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButtonMainPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_call_phone"
-        tools:layout_editor_absoluteX="336dp"
-        tools:layout_editor_absoluteY="169dp" />
+        android:onClick="dialToPhone"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextMainPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextMainPhone"
+        app:layout_constraintTop_toTopOf="@+id/editTextMainPhone"
+        app:srcCompat="@drawable/ic_call_phone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
