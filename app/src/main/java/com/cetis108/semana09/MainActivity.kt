@@ -18,15 +18,62 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // TODO: 29/04/21 Agregar un menú a la aplicación
+
+    fun sendEmail(view: View) {
+        val myEmail = "bidkar@cetis108.edu.mx"
+        val subject = "Hola desde Android con Kotlin"
+        val text = "Mensaje de prueba desde Android"
+        val recepients = arrayOf("uno@numero.com", "dos@numero.com")
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            data = Uri.parse(myEmail)
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, text)
+            putExtra(Intent.EXTRA_EMAIL, recepients)
+            type = "text/plain"
+        }
+
+        try {
+            startActivity(Intent.createChooser(intent, "Elige una aplicación"))
+            finish()
+        } catch(ex: Exception) {
+            ex.printStackTrace()
+            Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     fun sendSms(view: View) {
-        // TODO: 28/04/21 Realizar un intent para enviar mensajes SMS
+        val phoneNumber = "6871234567"
+        val message = "Hola desde Android con Kotlin"
+        val intent = Intent().apply {
+            action = Intent.ACTION_VIEW
+            data = Uri.parse("sms:$phoneNumber")
+            putExtra("sms_body", message)
+        }
+
+        try {
+            startActivity(intent)
+            finish()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun takePhoto(view: View) {
-        // TODO: 28/04/21 Realizar un intent para hacer uso de la cámara del teléfono
+        val intent = Intent("android.media.action.IMAGE_CAPTURE")
+
+        try {
+            startActivity(intent)
+            finish()
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+            Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
+        }
     }
 
-    fun dialToPhone(view: View) {
+    fun dialPhoneNumber(view: View) {
         val phoneNumber = findViewById<EditText>(R.id.editTextMainPhone).text.toString()
         if (phoneNumber.isNullOrEmpty()) {
             Toast.makeText(this, "Ingresa un número telefónico para marcar", Toast.LENGTH_SHORT)

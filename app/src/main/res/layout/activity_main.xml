@@ -47,11 +47,46 @@
         android:id="@+id/imageButtonMainPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="dialToPhone"
+        android:onClick="dialPhoneNumber"
         app:layout_constraintBottom_toBottomOf="@+id/editTextMainPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editTextMainPhone"
         app:layout_constraintTop_toTopOf="@+id/editTextMainPhone"
         app:srcCompat="@drawable/ic_call_phone" />
+
+    <Button
+        android:id="@+id/buttonMainEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:onClick="sendEmail"
+        android:text="Send Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMainPhone" />
+
+    <Button
+        android:onClick="takePhoto"
+        android:id="@+id/buttonMainCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMainSms" />
+
+    <Button
+        android:id="@+id/buttonMainSms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="sendSms"
+        android:text="Send SMS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMainEmail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
