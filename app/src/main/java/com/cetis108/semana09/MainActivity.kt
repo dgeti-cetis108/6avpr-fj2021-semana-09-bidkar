@@ -5,6 +5,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.webkit.URLUtil
 import android.widget.EditText
@@ -18,7 +20,37 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // TODO: 29/04/21 Agregar un menú a la aplicación
+    // cargar el menu en este activity
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    // definir las acciones de cada item del menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // when es equivalente al switch case de c#
+        when (item!!.itemId) {
+            R.id.itemMenuMainTakePhoto -> {
+                // TODO: 30/04/21 Para el profesor: corregir el llamado de estas funciones
+                //takePhoto()
+            }
+            R.id.itemMenuMainSendEmail -> {
+                //sendEmail()
+            }
+            R.id.itemMenuMainSendSms -> {
+                //sendSms()
+            }
+            R.id.itemMenuMainAboutUs -> {
+                showAboutUs()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun showAboutUs() {
+        // TODO: 30/04/21 Implementar el método para que muestre un activity con tu nombre completo,
+        //       grupo, numero de control, carrera o especialidad
+    }
 
     fun sendEmail(view: View) {
         val myEmail = "bidkar@cetis108.edu.mx"
@@ -36,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
         try {
             startActivity(Intent.createChooser(intent, "Elige una aplicación"))
-            finish()
         } catch(ex: Exception) {
             ex.printStackTrace()
             Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
@@ -54,7 +85,6 @@ class MainActivity : AppCompatActivity() {
 
         try {
             startActivity(intent)
-            finish()
         } catch (ex: Exception) {
             ex.printStackTrace()
             Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
@@ -66,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
         try {
             startActivity(intent)
-            finish()
         } catch (ex: Exception) {
             ex.printStackTrace()
             Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
@@ -83,7 +112,13 @@ class MainActivity : AppCompatActivity() {
                 data = Uri.parse("tel:$phoneNumber")
                 action = Intent.ACTION_DIAL
             }
-            startActivity(intent)
+
+            try {
+                startActivity(intent)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -94,7 +129,13 @@ class MainActivity : AppCompatActivity() {
                 action = Intent.ACTION_VIEW
                 data = Uri.parse("$url")
             }
-            startActivity(intent)
+
+            try {
+                startActivity(intent)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                Toast.makeText(this, "Error: ${ex.toString()}", Toast.LENGTH_SHORT).show()
+            }
         } else {
             Toast.makeText(this, "Dirección incorrecta $url", Toast.LENGTH_SHORT).show()
         }
