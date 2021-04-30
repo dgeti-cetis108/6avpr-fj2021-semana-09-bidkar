@@ -28,17 +28,16 @@ class MainActivity : AppCompatActivity() {
 
     // definir las acciones de cada item del menu
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // when es equivalente al switch case de c#
+                // when es equivalente al switch case de c#
         when (item!!.itemId) {
             R.id.itemMenuMainTakePhoto -> {
-                // TODO: 30/04/21 Para el profesor: corregir el llamado de estas funciones
-                //takePhoto()
+                takePhoto(null)
             }
             R.id.itemMenuMainSendEmail -> {
-                //sendEmail()
+                sendEmail(null)
             }
             R.id.itemMenuMainSendSms -> {
-                //sendSms()
+                sendSms(null)
             }
             R.id.itemMenuMainAboutUs -> {
                 showAboutUs()
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         //       grupo, numero de control, carrera o especialidad
     }
 
-    fun sendEmail(view: View) {
+    fun sendEmail(view: View?) {
         val myEmail = "bidkar@cetis108.edu.mx"
         val subject = "Hola desde Android con Kotlin"
         val text = "Mensaje de prueba desde Android"
@@ -74,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun sendSms(view: View) {
+    fun sendSms(view: View?) {
         val phoneNumber = "6871234567"
         val message = "Hola desde Android con Kotlin"
         val intent = Intent().apply {
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun takePhoto(view: View) {
+    fun takePhoto(view: View?) {
         val intent = Intent("android.media.action.IMAGE_CAPTURE")
 
         try {
@@ -102,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun dialPhoneNumber(view: View) {
+    fun dialPhoneNumber(view: View?) {
         val phoneNumber = findViewById<EditText>(R.id.editTextMainPhone).text.toString()
         if (phoneNumber.isNullOrEmpty()) {
             Toast.makeText(this, "Ingresa un número telefónico para marcar", Toast.LENGTH_SHORT)
@@ -122,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun openInBrowser(view: View) {
+    fun openInBrowser(view: View?) {
         val url = "https://" + findViewById<EditText>(R.id.editTextMainUrl).text.toString()
         if (URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches()) {
             val intent = Intent().apply {
